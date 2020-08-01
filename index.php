@@ -2,6 +2,8 @@
 <html>
 
 <head>
+
+
   <style>
     h1 {
       background-color: black;
@@ -54,7 +56,7 @@ $query = mysqli_query($dbconnect, "SELECT * FROM daily_workouts")
 while ($row = mysqli_fetch_array($query)) {
   echo
    "<tr>
-    <td><button>Delete</button></td>
+    <td><button onclick='getElementById(\"demo\").innerHTML=\"This Should Delete.\"'>Delete</button></td>
     <td>{$row['id']}</td>
     <td>{$row['weekday']}</td>
     <td>{$row['hours']}</td>
@@ -66,7 +68,7 @@ while ($row = mysqli_fetch_array($query)) {
 ?>
 
 <tr>
-  <td><button>Add</button></td>
+  <td><button onclick="getElementById('demo').innerHTML='This Should Add.'">Add</button></td>
   <td></td>
   <td><input type="text"/></td>
   <td><input type="text"/></td>
@@ -74,5 +76,8 @@ while ($row = mysqli_fetch_array($query)) {
 </tr>
 
 </table>
+
+
+<p id='demo'></p>
 
 </html>
