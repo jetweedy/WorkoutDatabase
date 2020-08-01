@@ -67,6 +67,8 @@ while ($row = mysqli_fetch_array($query)) {
 
 ?>
 
+
+
 <tr>
   <td><button onclick="getElementById('demo').innerHTML='This Should Add.'">Add</button></td>
   <td></td>
@@ -77,7 +79,10 @@ while ($row = mysqli_fetch_array($query)) {
 
 </table>
 
-
 <p id='demo'></p>
+
+
+
+<button onclick="location.href='addworkout.php?weekday=Tuesday&hours=4&details=Marathon';">Try me.</button>
 
 </html>
