@@ -3,7 +3,6 @@
 
 <head>
 
-
   <style>
     h1 {
       background-color: black;
@@ -18,11 +17,19 @@
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-
   </style>
+
+  <script type="text/javascript">
+    function deleteWorkout(workoutID) {
+      location.href = "deleteworkout.php?workoutID="+workoutID;
+    }
+  </script>
+
 </head>
 
 <body>
+
+
 <?php
 
 $hostname = "localhost";
@@ -37,16 +44,17 @@ if ($dbconnect->connect_error) {
 }
 
 ?>
-<h1>Doug's Weekly Workout Schedule</h1>
 
+
+<h1>Doug's Weekly Workout Schedule</h1>
 <table>
 <tr>
   <td>Action</td>
-  <td>Table ID</td>
   <td>Weekday</td>
   <td>Hours Needed</td>
   <td>Workout Details</td>
 </tr>
+
 
 <?php
 
@@ -56,33 +64,26 @@ $query = mysqli_query($dbconnect, "SELECT * FROM daily_workouts")
 while ($row = mysqli_fetch_array($query)) {
   echo
    "<tr>
-    <td><button onclick='getElementById(\"demo\").innerHTML=\"This Should Delete.\"'>Delete</button></td>
-    <td>{$row['id']}</td>
+    <td><button onclick=\"deleteWorkout({$row['id']})\">Delete</button></td>
     <td>{$row['weekday']}</td>
     <td>{$row['hours']}</td>
     <td>{$row['details']}</td>
    </tr>\n";
-
 }
 
 ?>
 
-
-
 <tr>
-  <td><button onclick="getElementById('demo').innerHTML='This Should Add.'">Add</button></td>
-  <td></td>
-  <td><input type="text"/></td>
-  <td><input type="text"/></td>
-  <td><input type="text"/></td>
-</tr>
+  <td>
+    <form action="addworkout.php" id="form1">
+      <input type="submit" value="Add workout">
+    </form>    
+  </td>
+  <td><input type="text" name="weekday" form="form1"></td>
+  <td><input type="text" name="hours" form="form1"></td>
+  <td><input type="text" name="details" form="form1"></td>
+<tr>
 
 </table>
-
-<p id='demo'></p>
-
-
-
-<button onclick="location.href='addworkout.php?weekday=Tuesday&hours=4&details=Marathon';">Try me.</button>
 
 </html>

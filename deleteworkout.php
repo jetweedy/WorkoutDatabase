@@ -1,8 +1,6 @@
 <?php
 
-$newWeekday = $_GET['weekday'];
-$newHours = $_GET['hours'];
-$newDetails = $_GET['details'];
+$workoutID = $_GET['workoutID'];
 
 $hostname = "localhost";
 $username = "dlargent";
@@ -15,12 +13,12 @@ if ($dbconnect->connect_error) {
   die("Database connection failed: " . $dbconnect->connect_error);
 }
 
-$sqlString = "INSERT INTO daily_workouts(weekday,hours,details) VALUES ('".$newWeekday."','".$newHours."','".$newDetails."')";
+$sqlString = "DELETE FROM daily_workouts WHERE id=".$workoutID;
 $query = mysqli_query($dbconnect, $sqlString)
-   or die (mysqli_error($dbconnect));
+  or die (mysqli_error($dbconnect));
 
 ?>
 
 <script type="text/javascript">
- location.href = "index.php";
+   location.href = "index.php";
 </script>
