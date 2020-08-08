@@ -4,6 +4,7 @@
 <head>
 
   <style>
+
     h1 {
       background-color: black;
       color: white;
@@ -18,12 +19,6 @@
       background-color: #f2f2f2;
     }
   </style>
-
-  <script type="text/javascript">
-    function deleteWorkout(workoutID) {
-      location.href = "deleteworkout.php?workoutID="+workoutID;
-    }
-  </script>
 
 </head>
 
@@ -62,9 +57,17 @@ $query = mysqli_query($dbconnect, "SELECT * FROM daily_workouts")
    or die (mysqli_error($dbconnect));
 
 while ($row = mysqli_fetch_array($query)) {
+  $deleteHREF = "deleteworkout.php?workoutID=" . $row['id'];
   echo
    "<tr>
-    <td><button onclick=\"deleteWorkout({$row['id']})\">Delete</button></td>
+    <td>
+      <a href=\"deleteworkout.php?workoutID={$row['id']}\">
+        <button>Delete</button>
+      </a>
+      <a href=\"editworkout.php?workoutID={$row['id']})\">
+        <button>Edit</button>
+      </a>
+    </td>
     <td>{$row['weekday']}</td>
     <td>{$row['hours']}</td>
     <td>{$row['details']}</td>
@@ -85,5 +88,6 @@ while ($row = mysqli_fetch_array($query)) {
 <tr>
 
 </table>
+
 
 </html>
