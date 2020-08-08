@@ -57,13 +57,13 @@ $query = mysqli_query($dbconnect, "SELECT * FROM daily_workouts")
    or die (mysqli_error($dbconnect));
 
 while ($row = mysqli_fetch_array($query)) {
-  $deleteHREF = "deleteworkout.php?workoutID=" . $row['id'];
   echo
    "<tr>
     <td>
-      <a href=\"deleteworkout.php?workoutID={$row['id']}\">
-        <button>Delete</button>
-      </a>
+      <form style='display: inline' action='databaseaction.php' method='get'>
+        <input type='hidden' name='action' value='deleteWorkout'>
+        <button name='workoutID' type='submit' value={$row['id']}>Delete</button>  
+      </form>
       <a href=\"editworkout.php?workoutID={$row['id']})\">
         <button>Edit</button>
       </a>
@@ -78,7 +78,8 @@ while ($row = mysqli_fetch_array($query)) {
 
 <tr>
   <td>
-    <form action="addworkout.php" id="form1">
+    <form action="databaseaction.php" id="form1">
+      <input type="hidden" name="action" value="addWorkout">
       <input type="submit" value="Add workout">
     </form>    
   </td>
