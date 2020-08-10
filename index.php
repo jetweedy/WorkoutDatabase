@@ -9,26 +9,8 @@ include 'dbconfig.php';
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-
 <head>
-
-  <style>
-
-    h1 {
-      background-color: black;
-      color: white;
-    }
-    table {
-      border-collapse: collapse;
-    }
-    table, th, td {
-      border: 1px solid black;
-    }  
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  </style>
-
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -56,9 +38,9 @@ while ($row = mysqli_fetch_array($query)) {
         <input type='hidden' name='action' value='deleteWorkout'>
         <button name='workoutID' type='submit' value={$row['id']}>Delete</button>  
       </form>
-      <a href=\"editworkout.php?workoutID={$row['id']})\">
-        <button>Edit</button>
-      </a>
+      <form style='display: inline' action='databaseedit.php' method='get'>
+        <button name='workoutID' type='submit' value={$row['id']}>Edit</button>  
+      </form>
     </td>
     <td>{$row['weekday']}</td>
     <td>{$row['hours']}</td>
