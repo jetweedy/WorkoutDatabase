@@ -15,7 +15,7 @@ include 'dbconfig.php';
 
 <body>
 
-<h1>Doug's Weekly Workout Schedule</h1>
+<h1>Welcome <?php echo $login_name; ?></h1>
 <table>
 <tr>
   <td>Action</td>
