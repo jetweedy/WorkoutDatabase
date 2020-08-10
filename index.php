@@ -1,3 +1,12 @@
+<?php
+// Make sure the user is logged in.
+require 'auth.php';
+
+// Connect to database.
+include 'dbconfig.php';
+?>
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
@@ -23,23 +32,6 @@
 </head>
 
 <body>
-
-
-<?php
-
-$hostname = "localhost";
-$username = "dlargent";
-$password = "asdfjkl";
-$db = "workouts";
-
-$dbconnect=mysqli_connect($hostname,$username,$password,$db);
-
-if ($dbconnect->connect_error) {
-  die("Database connection failed: " . $dbconnect->connect_error);
-}
-
-?>
-
 
 <h1>Doug's Weekly Workout Schedule</h1>
 <table>
@@ -78,7 +70,7 @@ while ($row = mysqli_fetch_array($query)) {
 
 <tr>
   <td>
-    <form action="databaseaction.php" id="form1">
+    <form style='display: inline' action="databaseaction.php" id="form1" method="get">
       <input type="hidden" name="action" value="addWorkout">
       <input type="submit" value="Add workout">
     </form>    
@@ -89,6 +81,10 @@ while ($row = mysqli_fetch_array($query)) {
 <tr>
 
 </table>
+
+<form style='display: inline' action='logout.php'>
+  <button type='submit'>Log out</button>  
+</form>
 
 
 </html>

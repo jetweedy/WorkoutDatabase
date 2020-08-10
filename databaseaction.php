@@ -1,17 +1,9 @@
 <?php
 
+// Connect to database.
+include 'dbconfig.php';
+
 $action = $_GET['action'];  // What I'm supposed to do
-
-$hostname = "localhost";
-$username = "dlargent";
-$password = "asdfjkl";
-$db = "workouts";
-
-$dbconnect=mysqli_connect($hostname,$username,$password,$db);
-
-if ($dbconnect->connect_error) {
-  die("Database connection failed: " . $dbconnect->connect_error);
-}
 
 switch ($action) {
  	case 'deleteWorkout':
@@ -36,8 +28,6 @@ switch ($action) {
  		break;
  } 
 
-?>
+ header('location: /index.php');
 
-<script type="text/javascript">
-   location.href = "index.php";
-</script>
+?>
