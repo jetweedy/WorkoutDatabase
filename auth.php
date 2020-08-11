@@ -12,6 +12,8 @@
    $login_session = $row['username'];
 
    $login_name = $row['firstName'] . " " . $row['lastName'];
+
+   $login_isAdmin = $row['isAdmin'];
    
    if(!isset($_SESSION['login_user'])){
       header("location:login.php");

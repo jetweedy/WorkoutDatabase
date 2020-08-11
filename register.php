@@ -1,4 +1,5 @@
 <?php
+
    include("dbconfig.php");
    session_start();
    
@@ -15,9 +16,9 @@
       $sqlString = "INSERT INTO users (username, password, isAdmin, firstName, lastName) VALUES ('" .
         $myusername . "','" . $mypassword . "',false,'" . $myfirstname . "','" . $mylastname . "')";
         
-      $query = mysqli_query($dbconnect, $sqlString);
-        //or die (mysqli_error($dbconnect));
-        //break;
+      $query = mysqli_query($dbconnect, $sqlString)
+        or die (mysqli_error($dbconnect));
+      
 
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($dbconnect,$sql);

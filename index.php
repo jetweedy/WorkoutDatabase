@@ -1,11 +1,7 @@
 <?php
-// Make sure the user is logged in.
+// Make sure the user is logged in.  This also connects to the database.
 require 'auth.php';
-
-// Connect to database.
-include 'dbconfig.php';
 ?>
-
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -15,7 +11,12 @@ include 'dbconfig.php';
 
 <body>
 
-<h1>Welcome <?php echo $login_name; ?></h1>
+<h1>Welcome 
+  <?php echo $login_name;
+    if ($login_isAdmin) {
+      echo " - Admin User";
+    } 
+  ?></h1>
 <table>
 <tr>
   <td>Action</td>
@@ -54,7 +55,7 @@ while ($row = mysqli_fetch_array($query)) {
   <td>
     <form style='display: inline' action="databaseaction.php" id="form1" method="get">
       <input type="hidden" name="action" value="addWorkout">
-      <input type="submit" value="Add workout">
+      <input type="submit" value="Add new workout">
     </form>    
   </td>
   <td><input type="text" name="weekday" form="form1"></td>
@@ -63,6 +64,22 @@ while ($row = mysqli_fetch_array($query)) {
 <tr>
 
 </table>
+
+<?php
+
+  if ($login_isAdmin) {
+      echo 
+      "<br>
+      <br>
+      <form style='display: inline' action='admin.php'>
+        <button type='submit'>Manage users</button>  
+      </form>";
+    }
+      
+?>
+
+<br>
+<br>
 
 <form style='display: inline' action='logout.php'>
   <button type='submit'>Log out</button>  
