@@ -11,12 +11,12 @@
    
    $login_session = $row['username'];
 
-   $login_name = $row['firstName'] . " " . $row['lastName'];
+   $login_name = $row['firstname'] . " " . $row['lastname'];
 
-   $login_isAdmin = $row['isAdmin'];
+   $login_isadmin = $row['isadmin'];
    
    if(!isset($_SESSION['login_user'])){
-      header("location:login.php");
+      header("location: /login.php");
       die();
    }
 ?>

@@ -13,7 +13,7 @@ require 'auth.php';
 
 <h1>Welcome 
   <?php echo $login_name;
-    if ($login_isAdmin) {
+    if ($login_isadmin) {
       echo " - Admin User";
     } 
   ?></h1>
@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_array($query)) {
 
 <?php
 
-  if ($login_isAdmin) {
+  if ($login_isadmin) {
       echo 
       "<br>
       <br>

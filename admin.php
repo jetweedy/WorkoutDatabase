@@ -3,8 +3,8 @@
 require 'auth.php';
 
 // Make sure the current user has admin authorization
-if(!login_isAdmin){
-      header("location: index.php");
+if(!login_isadmin){
+      header("location: /index.php");
       die();
    }
 ?>
@@ -25,10 +25,9 @@ if(!login_isAdmin){
   <td>First Name</td>
   <td>Last Name</td>
   <td>UserName</td>
-  <td>Password</td>
+  <td>Email</td>
   <td>Admin? (1=yes, 0=no)</td>
 </tr>
-
 
 <?php
 
@@ -47,11 +46,11 @@ while ($row = mysqli_fetch_array($query)) {
         <button name='id' type='submit' value={$row['id']}>Edit</button>  
       </form>
     </td>
-    <td>{$row['firstName']}</td>
-    <td>{$row['lastName']}</td>
+    <td>{$row['firstname']}</td>
+    <td>{$row['lastname']}</td>
     <td>{$row['username']}</td>
-    <td>{$row['password']}</td>
-    <td>{$row['isAdmin']}</td>
+    <td>{$row['email']}</td>
+    <td>{$row['isadmin']}</td>
     </tr>\n";
 }
 
@@ -67,7 +66,7 @@ while ($row = mysqli_fetch_array($query)) {
   <td><input type="text" name="firstname" form="form1"></td>
   <td><input type="text" name="lastname" form="form1"></td>
   <td><input type="text" name="username" form="form1"></td>
-  <td><input type="text" name="password" form="form1"></td>
+  <td><input type="text" name="email" form="form1"></td>
   <td><input type="text" name="isadmin" form="form1"></td>
 <tr>
 

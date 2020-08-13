@@ -19,7 +19,7 @@ echo
   <td>First Name</td>
   <td>Last Name</td>
   <td>UserName</td>
-  <td>Password</td>
+  <td>Email</td>
   <td>Admin? (1=yes, 0=no)</td>
   </tr>
 
@@ -31,11 +31,11 @@ echo
       <input type='submit' value='Save changes'>
     </form>    
   </td>
-  <td><input type='text' name='firstname' form='form1' value='" . $row['firstName'] . "'></td>
-  <td><input type='text' name='lastname' form='form1' value='" . $row['lastName'] . "'></td>
+  <td><input type='text' name='firstname' form='form1' value='" . $row['firstname'] . "'></td>
+  <td><input type='text' name='lastname' form='form1' value='" . $row['lastname'] . "'></td>
   <td><input type='text' name='username' form='form1' value='" . $row['username'] . "'></td>
-  <td><input type='text' name='password' form='form1' value='" . $row['password'] . "'></td>
-  <td><input type='text' name='isadmin' form='form1' value='" . $row['isAdmin'] . "'></td>
+  <td><input type='text' name='email' form='form1' value='" . $row['email'] . "'></td>
+  <td><input type='text' name='isadmin' form='form1' value='" . $row['isadmin'] . "'></td>
   </tr>
 </table>"
 
