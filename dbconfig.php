@@ -1,5 +1,7 @@
 <?php
 
+// Connect to the database
+
 $hostname = "localhost";
 $username = "dlargent";
 $password = "asdfjkl";

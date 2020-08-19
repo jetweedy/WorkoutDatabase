@@ -3,12 +3,15 @@
 // Connect to database.
 include 'dbconfig.php';
 
-$id = $_GET['id']; // Database index for me to work on
+// Pull the information for the requested user from the users database table.
+$id = $_POST['id']; 
 $sqlString = "SELECT * FROM users WHERE id=".$id;
 $query = mysqli_query($dbconnect, $sqlString)
   or die (mysqli_error($dbconnect));
 $row = mysqli_fetch_array($query);
 
+// Create a table to display a form where the admin user can edit user info.
+// POST the info to my adminaction.php page.
 echo 
   "<link rel='stylesheet' type='text/css' href='style.css'>
 
@@ -25,7 +28,7 @@ echo
 
   <tr>
   <td>
-    <form style='display: inline' action='adminaction.php' id='form1' method='get'>
+    <form style='display: inline' action='adminaction.php' id='form1' method='POST'>
       <input type='hidden' name='action' value='editUser'>
       <input type='hidden' name='id' value=" . $id . ">
       <input type='submit' value='Save changes'>

@@ -2,7 +2,7 @@
 // Make sure the user is logged in.  This also connects to the database.
 require 'auth.php';
 
-// Make sure the current user has admin authorization
+// This page is for admin level users only.  Otherwise, go to the index page
 if(!login_isadmin){
       header("location: /index.php");
       die();
@@ -19,6 +19,7 @@ if(!login_isadmin){
 
 <h1>Manage users</h1>
 
+<!-- Build the title row to the table -->
 <table>
 <tr>
   <td>Action</td>	
@@ -31,18 +32,25 @@ if(!login_isadmin){
 
 <?php
 
+// Read the entire table of users
 $query = mysqli_query($dbconnect, "SELECT * FROM users")
    or die (mysqli_error($dbconnect));
 
+// Build a table with one row for each user
 while ($row = mysqli_fetch_array($query)) {
   echo
+// Each row has two action buttons: Delete and Edit
+// All information known about each user is displayed, except for their
+// hashed password, which would just look like gobbledygook.  In order
+// for a user to access their password, they would have to have to click
+// the 'Forgot your password?' button on the login screen.
    "<tr>
     <td>
-      <form style='display: inline' action='adminaction.php' method='get'>
+      <form style='display: inline' action='adminaction.php' method='post'>
         <input type='hidden' name='action' value='deleteUser'>
         <button name='id' type='submit' value={$row['id']}>Delete</button>  
       </form>
-      <form style='display: inline' action='adminedituser.php' method='get'>
+      <form style='display: inline' action='adminedituser.php' method='post'>
         <button name='id' type='submit' value={$row['id']}>Edit</button>  
       </form>
     </td>
@@ -56,9 +64,11 @@ while ($row = mysqli_fetch_array($query)) {
 
 ?>
 
+<!-- The last row in the table allows the administrator to enter the information
+  to create a new user. -->
 <tr>
   <td>
-    <form style='display: inline' action="adminaction.php" id="form1" method="get">
+    <form style='display: inline' action="adminaction.php" id="form1" method="post">
       <input type="hidden" name="action" value="addUser">
       <input type="submit" value="Add new user">
     </form>    

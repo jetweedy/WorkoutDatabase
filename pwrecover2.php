@@ -5,7 +5,11 @@
    
    if($_SERVER["REQUEST_METHOD"] == "GET") {
       
-      // put new user into users database
+      // User has arrived at this page by clicking on a link containing a random
+      // recovery code, which has also been stored on their row in the users table
+      // in the database.  Check to see if the code is found in the table.  If so,
+      // grab the first and last name of the user in order to construct a personalized
+      // greeting.
 
       $recoverycode = $_GET['recoverycode'];
 
@@ -31,24 +35,10 @@
    
    <head>
       <title>Password Recovery Page</title>
-      
-      <style type = "text/css">
-         body {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:14px;
-         }
-         label {
-            font-weight:bold;
-            width:100px;
-            font-size:14px;
-         }
-         .box {
-            border:#666666 solid 1px;
-         }
-      </style>
-      
    </head>
    
+   <!-- Invite the user to choose a new password. Send the password to another
+     php which will store it. -->
    <body bgcolor = "#FFFFFF">
 	
       <div align = "center">
