@@ -9,4 +9,8 @@ This is a fork of a repo by dlargent for the purposes of testing pushing it to H
 1. I've also added a php/dbSetup.php file to build the relevant table(s) before running the other stuff.
 
 
+## Issues
+
+1. ____ Seems to show the same workout table no matter who is logged in?
+
 
